@@ -16,4 +16,23 @@ class RecipesController < ApplicationController
 
     redirect_to recipe_path(@recipe.id)
   end
+  
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    recipe_params = params.require(:recipe).permit(:title, :recipe_type,
+                                                    :cuisine, :difficulty,
+                                                    :cook_time, :ingredients,
+                                                    :cook_method)
+    @recipe = Recipe.find(params[:id])
+
+    @recipe.update(recipe_params)
+
+    redirect_to recipe_path(@recipe.id)
+
+  end
+
+
 end
