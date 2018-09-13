@@ -30,7 +30,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe.id)
+      flash[:success] = 'Receita marcada como destaque com sucesso!'
+      redirect_to @recipe
     else
       @recipes_types = RecipeType.all
       render "edit"
@@ -45,7 +46,7 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:title, :recipe_type_id,
                                    :cuisine, :difficulty,
                                    :cook_time, :ingredients,
-                                   :cook_method)    
+                                   :cook_method, :featured)    
   end 
 
 end

@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
   def index
-    @recipes = Recipe.all
+    
+    @featured_recipes = Recipe.where(featured: true)
+
+    @another_recipes = Recipe.where(featured: false)
   end
 end

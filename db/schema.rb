@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_004304) do
     t.text "ingredients"
     t.text "cook_method"
     t.integer "recipe_type_id"
-    t.boolean "featured"
+    t.boolean "featured", default: false
     t.index ["recipe_type_id"], name: "index_recipes_on_recipe_type_id"
   end
 
